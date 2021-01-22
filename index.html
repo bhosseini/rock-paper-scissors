@@ -1,70 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Rock, Paper, Scissors!</title>
-</head>
+    <head>
+        <title>Rock, Paper, Scissors!</title>
+    </head>
 
-<script>
+    <body>
+        <div class="buttons">
+            <button id="ROCK">Rock</button>
+            <button id="PAPER">Paper</button>
+            <button id="SCISSORS">Scissors</button>
+        </div>
 
-    //Global variables
-    let playerScore = 0, computerScore = 0;
+        <div id="outcome"></div>
+    </body>
 
-    //Return "Rock", "Paper", or "Scissors" randomly
-    function computerPlay() {
-        let computerOptions = ["ROCK", "PAPER", "SCISSORS"];
-        let randomElement = getRandomElement(computerOptions);
-
-        return computerOptions[randomElement];
-    }
-
-    //Return random element of array
-    function getRandomElement(array) {
-        let randomElement = Math.floor(Math.random() * array.length);
-
-        return randomElement;
-    }
-
-    function playRound(playerSelection, computerSelection) {
-        if (playerSelection == computerSelection) {
-            return "It's a tie!";
-        } else if ((playerSelection == "ROCK" && computerSelection == "SCISSORS") ||
-                   (playerSelection == "PAPER" && computerSelection == "ROCK") ||
-                   (playerSelection == "SCISSORS" && computerSelection == "PAPER")) {
-            playerScore++;
-            return `You win! ${playerSelection} beats ${computerSelection}.`;
-        } else if ((playerSelection == "ROCK" && computerSelection == "PAPER") ||
-                   (playerSelection == "PAPER" && computerSelection == "SCISSORS") ||
-                   (playerSelection == "SCISSORS" && computerSelection == "ROCK")) {
-            computerScore++;
-            return `You lose! :( ${playerSelection} loses to ${computerSelection}.`; 
-        }
-    }
-
-    function game() {
-        let playerSelection, computerSelection;
-        playerScore, computerScore = 0;
-
-        for (let i = 0; i < 5; i++) {
-            playerSelection = prompt('Please enter "rock", "paper", or "scissors":');
-            playerSelection = playerSelection.toUpperCase();
-            computerSelection = computerPlay();
-            
-            console.log(playRound(playerSelection, computerSelection));
-            console.log("--------------");
-        }
-        console.log(reportFinalOutCome());
-    }    
-
-    function reportFinalOutCome() {
-        if (playerScore > computerScore) {
-            return `You've won the best of five! Final score: ${playerScore}-${computerScore}`;
-        } else if (playerScore < computerScore) {
-            return `You've lost the best of five! Final score: ${playerScore}-${computerScore}`;
-        } else {
-            return `You've tied the best of five! Final score: ${playerScore}-${computerScore}`;
-        }
-    }
-
-</script>
+    <script src="script.js"></script>
 
 </html>
